@@ -16,10 +16,7 @@ class Business:
         names = []
 
         # getting all the names
-        for i in businesses:
-            for b in i:
-                if b == 'name':
-                    names.append(i.get(b))
+        [names.append(business['name']) for business in businesses]
 
         # searching if the given name already exists
         if business_name in names:
@@ -40,10 +37,8 @@ class Business:
         print(f'Here are all {category} busnesses in {location}:')
 
         # printing all the business names
-        for i in businesses:
-            for b in i:
-                if b == 'name':
-                    print(i.get(b))
+        for business in businesses:
+            print(business['name'])
 
 
 category = input('Buisness category: ')
@@ -53,8 +48,8 @@ location = input('Buisness location: ')
 url = ''  # paste the url of your application
 api_key = ''  # paste the api key of your application
 
-url_api = Path('Url and Api Key.txt')
-if url_api.exists() == False:
+url_and_apikey_file = Path('Url and Api Key.txt')
+if url_and_apikey_file.exists() == False:
     Path('Url and Api Key.txt').write_text('''
     App Url: ''
     App Api Key: ''
@@ -69,16 +64,16 @@ if url_api.exists() == False:
     ''')
     raise 'This restart was necessery. Open the "Url and Api Key.txt" file and follow the steps in it'  # the app needs to restart after creating the Url and Api Key file
 else:
-    urlapi = str(Path('Url and Api Key.txt').read_text())
-    uak = []
+    url_and_apikey_file_input = str(Path('Url and Api Key.txt').read_text())
+    url_and_apikey_file_items = []
 
     # finding the url and api key in the file
-    for i in urlapi.split("'"):
-        uak.append(i)
+    for i in url_and_apikey_file_input.split("'"):
+        url_and_apikey_file_items.append(i)
 
     # implementing the url and api key from the save file
-    url = uak[1]
-    api_key = uak[3]
+    url = url_and_apikey_file_items[1]
+    api_key = url_and_apikey_file_items[3]
 
 
 question = input('See if your buisness name is original? (y/n) ')
@@ -94,8 +89,8 @@ if question == 'y':
             category = input('Buisness category: ')
             location = input('Buisness location: ')
         else:
-            end = input('end? (y/n) ')
-            if end == 'y':
+            end_program = input('end? (y/n) ')
+            if end_program == 'y':
                 break
             else:
                 pass
@@ -107,8 +102,8 @@ else:
             category = input('Buisness category: ')
             location = input('Buisness location: ')
         else:
-            end = input('end? (y/n) ')
-            if end == 'y':
+            end_program = input('end? (y/n) ')
+            if end_program == 'y':
                 break
             else:
                 pass
