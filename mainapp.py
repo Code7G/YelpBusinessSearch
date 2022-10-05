@@ -41,10 +41,10 @@ class Business:
             print(business['name'])
 
 
-category = input('Buisness category: ')
-location = input('Buisness location: ')
+category = input(f'Choose the business category: ')
+location = input(f'Choose your business location: ')
 
-# for more information on maniualy adding the url and api key of Yelp go to line 116
+# for more information on maniualy adding the url and api key of Yelp go to line 111
 url = ''  # paste the url of your application
 api_key = ''  # paste the api key of your application
 
@@ -111,8 +111,8 @@ else:
 #
 #    For more information on how to create a yelp app go to:
 #    https://www.youtube.com/watch?v=GFhGN36Wf7Q a video by Widget Pack
-#    from there copy the api key and paste it in the quotations of api_key = '' on line 54
+#    from there copy the api key and paste it in the quotations of api_key = '' on line 49
 #
 #   For the url go to Yelp Fusion> Business Endpoints> Business Search and copy the url after 'GET'
-#   then paste it in the quotations of url = '' on line 53
+#   then paste it in the quotations of url = '' on line 48
 #
