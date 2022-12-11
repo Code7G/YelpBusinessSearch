@@ -1,8 +1,8 @@
 Python Yelp Business Search
 by Code7G
 
-With this program you can search for businesses and find out if you have a original business name idea.
-This is my first html based project. I plan on updating this project.
+With this program you can search for businesses and find out if you have a original business name and idea.
+This is my first html based project. I plan on updating this project, the next step will be for me to create a GUI for it.
 For feedback and contact:
 https://github.com/Code7G
 https://www.youtube.com/channel/UCQE01u74sYot89dbM9IHBhg
