@@ -5,6 +5,43 @@ from time import sleep
 
 
 if __name__ == '__main__':
+    # for more information on maniualy adding the url and api key of Yelp API go to line 286 Or follow the steps in the Url and Api Key.txt file after it is created
+    url = ''  # paste the url of your application
+    api_key = ''  # paste the api key of your application
+
+    # creating the file for api key and url from the user
+    url_and_apikey_file = Path('Url and Api Key.txt')
+    if url_and_apikey_file.exists() == False:
+        Path('Url and Api Key.txt').write_text('''
+        App Url: ''
+        App Api Key: ''
+
+        Paste the url and api key in the quotations
+
+        For more information on how to create a yelp app go to:
+        https://www.youtube.com/watch?v=GFhGN36Wf7Q a video by Widget Pack
+        from there copy the api key
+
+        For the url go to Yelp Fusion> Business Endpoints> Business Search and copy the url after 'GET'
+        ''')
+        print('''The app will close itself (via automatic error) in 20s, this is necessery because You need to defy the api key and url of tihis aplication.
+        To do this: Open the "Url and Api Key.txt" file located in the YelpBusinessSearch directory and follow the steps in it''')
+        sleep(20)
+        raise '''This restart was necessery
+              Open the "Url and Api Key.txt" file and follow the steps in it'''  # the app needs to restart after creating the Url and Api Key file
+    else:
+        url_and_apikey_file_input = str(
+            Path('Url and Api Key.txt').read_text())
+        url_and_apikey_file_items = []
+
+        # finding the url and api key in the file
+        for i in url_and_apikey_file_input.split("'"):
+            url_and_apikey_file_items.append(i)
+
+        # implementing the url and api key from the save file
+        url = url_and_apikey_file_items[1]
+        api_key = url_and_apikey_file_items[3]
+
     # getting all possible Yelp category and location options
     category_names = get_all_categorys()
     location_names = get_all_locations()
@@ -66,43 +103,6 @@ if __name__ == '__main__':
                         pass
                 else:
                     pass
-
-    # for more information on maniualy adding the url and api key of Yelp API go to line 286 Or follow the steps in the Url and Api Key.txt file after it is created
-    url = ''  # paste the url of your application
-    api_key = ''  # paste the api key of your application
-
-    # creating the file for api key and url from the user
-    url_and_apikey_file = Path('Url and Api Key.txt')
-    if url_and_apikey_file.exists() == False:
-        Path('Url and Api Key.txt').write_text('''
-        App Url: ''
-        App Api Key: ''
-
-        Paste the url and api key in the quotations
-
-        For more information on how to create a yelp app go to:
-        https://www.youtube.com/watch?v=GFhGN36Wf7Q a video by Widget Pack
-        from there copy the api key
-
-        For the url go to Yelp Fusion> Business Endpoints> Business Search and copy the url after 'GET'
-        ''')
-        print('''The app will close itself (via automatic error) in 20s, this is necessery because You need to defy the api key and url of tihis aplication.
-        To do this: Open the "Url and Api Key.txt" file located in the YelpBusinessSearch directory and follow the steps in it''')
-        sleep(20)
-        raise '''This restart was necessery
-              Open the "Url and Api Key.txt" file and follow the steps in it'''  # the app needs to restart after creating the Url and Api Key file
-    else:
-        url_and_apikey_file_input = str(
-            Path('Url and Api Key.txt').read_text())
-        url_and_apikey_file_items = []
-
-        # finding the url and api key in the file
-        for i in url_and_apikey_file_input.split("'"):
-            url_and_apikey_file_items.append(i)
-
-        # implementing the url and api key from the save file
-        url = url_and_apikey_file_items[1]
-        api_key = url_and_apikey_file_items[3]
 
     # using the api key and url
     business = Business(url, api_key)
